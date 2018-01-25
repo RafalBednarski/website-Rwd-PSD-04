@@ -1,0 +1,350 @@
+$main-font: 'Playfair Display', serif
+$sec-font: Montserrat
+$thr-font: "Playfair Display - Black"
+
+@mixin shape($min-height, $width, $background, $border)
+	min-height: $min-height
+	width: $width
+	background: $background
+	border: $border
+
+@mixin respond-to($media)
+    @media only screen and #{$media}	
+
+@mixin responsive-image($background-repeat, $-webkit-background-size, $-moz-background-size, $-o-background-size, $background-size, $background-position)	
+	background-repeat: $background-repeat
+	-webkit-background-size: $-webkit-background-size
+	-moz-background-size: $-moz-background-size
+	-o-background-size: $-o-background-size
+	background-size: $background-size
+	background-position: $background-position
+
+@mixin flex($display, $flex-direction, $justify-content, $flex-wrap, $align-items)
+	display: $display
+	flex-direction: $flex-direction
+	justify-content: $justify-content
+	flex-wrap: $flex-wrap
+	align-items: $align-items
+
+@mixin position($position, $top, $left, $z-index)
+	position: $position
+	top: $top
+	left: $left
+	z-index: $z-index
+
+@mixin font($font-family, $font-size, $font-weight)
+	font-family: $font-family
+	font-size: $font-size
+	font-weight: $font-weight		
+
+body
+	margin: 0
+	max-width: 1920px
+	font-family: $main-font
+h2
+	@include font($main-font, 1.5rem, bold)
+	margin-top: 2rem
+	z-index: 2	
+
+.topBar
+	@include shape(3.75rem, 100%, #000, none)	
+
+.myNavBar
+	@include flex(flex, row, center, wrap, center)
+	@include shape(5rem, 100%, #fff, none)
+	.myList
+		justify-content: flex-end
+		li
+			padding-right: 2rem
+			
+.hero
+	@include shape(50rem, 100%, url('../img/build/hero.png'), none)
+	@include responsive-image(no-repeat, cover, cover, cover, cover, center)
+	@include flex(flex, row, center, wrap, center)
+	background-color: rgba(0,0,0,0.7)
+	color: #fff
+	h3
+		@include position(relative, -10px, none, 0)
+		@include font($thr-font, 1.5rem, bold)
+	.borders
+		@include shape(95vh, 95vw, transparent, 1px solid #fff)
+		@include flex(flex, row, space-between, no-wrap, flex-start)
+		border-top: none
+		.topBorderL
+			@include shape(95vh, 40vw, transparent, 1px solid #fff)
+			border-bottom: none
+			border-left: none
+			border-right: none
+		.topBorderR
+			@include shape(95vh, 40vw, transparent, 1px solid #fff)
+			border-bottom: none
+			border-left: none
+			border-right: none
+		.logo
+			@include flex(flex, column, flex-end, no-wrap, center)
+			position: relative
+			img
+				@include position(relative, 12vh, none, 0)
+			h1
+				@include font($sec-font, 1.875rem, 400)
+				@include position(absolute, 50%, none, 1)
+				text-align: center
+			h2	
+				@include font($main-font, 6.375rem, 400)
+				@include position(absolute, 55%, none, 1)
+				text-align: center
+
+.about
+	@include shape(23rem, 100%, #f5f5f5, none)
+	@include flex(flex, column, center, wrap, center)
+	p
+		padding: 0 17% 0 17%
+		text-align: center
+		font-size: 1.5rem
+	.line
+		@include position(relative, -20px, -25px, 0)
+
+.features
+	@include shape(31.600rem, 100%, #e8e8e8, none)
+	z-index: -1
+	.line
+		@include position(relative, -33px, -10px, 0)
+	.boxes
+		@include flex(flex, row, flex-end, wrap, center)
+		.featBoxNext, .featBoxPrev
+			@include shape(2rem, 3rem, #f5f5f5, 0.063rem solid #b5b5b5)
+			@include flex(flex, row, center, wrap, center)
+			margin-left: 1rem
+
+	.shadowBoxL
+		@include shape(23rem, 20%, rgba(232, 232, 232, 0.7), none)
+		@include position(absolute, 88rem, 0px, 1)
+	.shadowBoxR
+		@include shape(23rem, 20%, rgba(232, 232, 232, 0.7), none)
+		@include position(absolute, 88rem, none, 1)
+		right: 0px
+	.myCarousel
+		padding-top: 1rem
+		.carBox
+			@include shape(21.400rem, 23.125rem, #fff, none)
+			margin-right: 1rem
+			margin-left: 1rem
+			.fake
+				@include shape(2rem, 100%, #e8e8e8, none)
+			h3
+				@include position(relative, -50px, 30px, 0)
+				font-size: 3.8rem
+			h4
+				@include font($sec-font, 1.25rem, bold)
+				color: #d3a731
+				margin-left: 2.2rem
+				margin-top: -2.5rem
+			p
+				font-size: 1rem
+				margin: 1.5rem 2.2rem 1.5rem 2.2rem
+			.moreBox
+				@include shape(2.188rem, 2.125rem, #fff, 0.063rem solid #d3a731)
+				@include flex(flex, row, center, wrap, center)
+				margin-left: 2.2rem			
+
+.people
+	@include shape(39rem, 100%, url('../img/build/people.png'), none)
+	@include responsive-image(no-repeat, cover, cover, cover, cover, center)
+	h2
+		color: #fff
+	.line
+		@include position(relative, -33px, -15px, 0)
+
+	.crew
+		@include flex(flex, row, center, wrap, center)
+		.crewMember
+			@include shape(26rem, 15rem, #283034, none)
+			opacity: 0.9
+			color: #fff
+			margin: 0.6rem
+			margin-bottom: 3rem
+			img
+				width: 15rem
+			.info
+				margin: 1.5rem
+				h5
+					font-family: $sec-font
+				p
+					font-size: 0.9rem	
+				hr	
+					background-color: #fff
+.articles
+	@include shape(60rem, 100%, #f5f5f5, none)
+	.headings
+		@include flex(flex, row, flex-start, wrap, flex-end)
+		.line
+			@include position(relative, -19px, -175px, 0)
+	.boxes
+		@include flex(flex, row, flex-end, wrap, flex-end)
+		.artBox
+			@include shape(2rem, 3rem, #f5f5f5, 0.063rem solid #b5b5b5)
+			@include flex(flex, row, center, wrap, center)
+			margin-left: 1rem
+	.newsBox
+		@include flex(flex, row, flex-start, no-wrap, center)
+		padding-top: 3rem
+
+		.picNews1
+			@include shape(18.125rem, 12.5rem, url('../img/build/1.png'), none)
+		.picNews2
+			@include shape(18.125rem, 12.5rem, url('../img/build/2.png'), none)
+		.picNews3
+			@include shape(18.125rem, 12.5rem, url('../img/build/3.png'), none)
+		.picNews4
+			@include shape(18.125rem, 12.5rem, url('../img/build/4.png'), none)		
+
+		.news
+			@include shape(18.125rem, 23.125rem, #fff, none)
+			@include flex(flex, column, flex-start, wrap, flex-start)
+			height: 18.125rem
+			padding: 1rem
+			h3
+				@include position(relative, -60px, 0, 0)
+				font-size: 3.8rem
+			h5
+				margin-top: -20px	
+			p	
+				font-size: 0.7rem
+			.data
+				@include flex(flex, row, flex-start, wrap, center)
+				p
+					@include font($sec-font, 0.690rem, 400)
+					padding-left: 0.5rem
+					margin-top: -70px
+				img
+					position: relative
+					top: -43px	
+			.more
+				@include flex(flex, row, flex-end, wrap, center)
+				@include font($sec-font, 0.9rem, 700)
+				color: #d3a731
+				img
+					@include position(relative, -8px, 8px, 0)	
+	.moreNews
+		@include flex(flex, row, center, wrap, center)
+		padding-top: 3rem
+		.moreButton
+			@include shape(3.125rem, 23.125rem, #f5f5f5, 1px solid #d5d5d5)	
+			@include flex(flex, row, center, wrap, center)
+			color: #a4a4a4
+			margin-bottom: 1rem
+			p
+				@include font($sec-font, 0.940rem, bold)
+				margin-bottom: 2px
+			img
+				position: relative
+				margin-left: 1rem
+
+.bottom
+	@include shape(25rem, 100%, #fff, none)
+	h4
+		margin-top: 3rem
+		z-index: 1
+		font-weight: bold
+	.line
+		@include position(relative, -33px, -10px, 0)
+
+	h5
+		@include font($sec-font, 1.25rem, bold)
+	.adress, .telephone, .mail
+		@include flex(flex, row, flex-start, wrap, flex-start)
+		.rectangle
+			@include shape(1.875rem, 1.875rem, #fff, 0.063rem solid #d3a731)	
+			@include flex(flex, row, center, wrap, center)
+			margin-right: 1.125rem	
+
+.footer
+	@include shape(5rem, 100%, #000, none)
+	.byeBye	
+		@include flex(flex, row, flex-start, wrap, center)
+		ul
+			padding: 0
+			margin-top: 2rem
+			padding-left: 0px
+			li
+				display: inline-block
+				margin-right: 2rem	
+				a
+					color: #676f72
+					padding-right: 0
+					&:hover
+						color: #fff
+	a
+		&:hover
+			text-decoration: none
+		p
+			@include font($sec-font, 0.75rem, normal)
+			color: #676f72
+			text-align: right
+			margin-top: 2.5rem	
+
+////////@media////////@media////////@media////////@media////////@media
+
+@media screen and (max-width: 1500px)
+	.features
+		.shadowBoxL
+			width: 25%
+		.shadowBoxR
+			width: 25%	
+
+@media screen and (max-width: 1205px)
+	.features
+		.shadowBoxL
+			width: 33%
+		.shadowBoxR
+			width: 33%
+	.articles		
+		.newsBox
+			.news		
+				.more
+					display: none			
+
+@media screen and (max-width: 920px)
+	.features
+		.shadowBoxL
+			display: none
+		.shadowBoxR
+			display: none	
+
+@media screen and (max-width: 970px)
+	.news
+		h5
+			font-size: 0.9rem
+
+@media screen and (max-width: 768px)
+	h2
+		margin-left: 1rem
+	.articles		
+		.newsBox
+			.news		
+				.more
+					display: inline-block
+					img
+						top: -35px
+						left: 50px
+	.footer
+		ul
+			margin-left: 1rem
+		a
+			p
+				margin-right: 1rem											
+
+@media screen and (max-width: 500px)
+	.hero
+		.borders
+			.logo
+				h1
+					top: 40%
+				h2
+					font-size: 3rem
+					top: 50%
+	.articles		
+		.newsBox
+			.news		
+				.more
+					display: none							
